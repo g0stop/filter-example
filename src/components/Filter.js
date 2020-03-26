@@ -43,14 +43,6 @@ const people1 = [
     }
 ];
 
-const people = [
-    "test1",
-    "test2",
-    "test3",
-    "test4",
-    "test12"
-];
-
 const FilterTest = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -59,9 +51,10 @@ const FilterTest = () => {
         setSearchTerm(e.target.value);
     };
     useEffect(() => {
-        const results = people.filter(person =>
-            person.toLowerCase().includes(searchTerm)
+        const results = people1.filter(person =>
+            person.lastName.toLowerCase().includes(searchTerm.toLowerCase())
         );
+        console.log(results);
         setSearchResults(results);
     }, [searchTerm]);
 
@@ -75,7 +68,7 @@ const FilterTest = () => {
             />
             <ul>
                 {searchResults.map(item => (
-                    <li>{item}</li>
+                    <li>{item.lastName}</li>
                 ))}
             </ul>
         </div>
